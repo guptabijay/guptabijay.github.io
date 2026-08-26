@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobbies — Bijay Gupta</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="bg-shape shape1"></div>
+    <div class="bg-shape shape2"></div>
+    <div class="bg-shape shape3"></div>
+
+    <nav id="main-nav">
+        <div id="nav-backdrop" class="nav-backdrop"></div>
+        <div class="nav-container glass" id="nav-container">
+            <a href="index.html" class="logo">Bijay.</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Profile</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="hobbies.html" class="active">Hobbies</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button id="theme-toggle" class="glass-btn icon-btn" title="Toggle Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        <button id="menu-btn" class="menu-btn glass-btn" title="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <main class="inner-page">
+
+        <!-- Page Header -->
+        <div class="page-header reveal">
+            <div class="section-label">Beyond the Classroom</div>
+            <h1>My <span class="highlight">Hobbies</span></h1>
+            <p>What I do when I'm not studying — creativity, community and capturing the world.</p>
+        </div>
+
+        <!-- Photography Brand Section -->
+        <section class="photography-brand reveal">
+            <div class="brand-card glass-panel">
+                <div class="brand-left">
+                    <div class="brand-logo-circle">
+                        <i class="fas fa-camera-retro"></i>
+                    </div>
+                    <div>
+                        <h2>1BG Photography</h2>
+                        <p class="brand-tagline">My personal photography brand — capturing genuine moments, landscapes and stories through the lens.</p>
+                        <div class="brand-socials">
+                            <a href="https://www.tiktok.com/@1bgphotography" target="_blank" class="social-btn glass-btn tiktok">
+                                <i class="fab fa-tiktok"></i> TikTok
+                            </a>
+                            <a href="https://www.instagram.com/1bgphotography/" target="_blank" class="social-btn glass-btn insta">
+                                <i class="fab fa-instagram"></i> Instagram
+                            </a>
+                            <a href="https://www.facebook.com/1bgphotography/" target="_blank" class="social-btn glass-btn fb">
+                                <i class="fab fa-facebook-f"></i> Facebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo Gallery Slider -->
+        <section class="gallery-section reveal">
+            <div class="section-label">Gallery</div>
+            <h2>My <span class="highlight">Photography</span></h2>
+            <p style="margin-bottom:2rem;">Click on any image to view it in full size.</p>
+
+            <div class="photo-slider" id="photo-slider">
+                <!-- Replace src with your own image filenames placed in the portfolio_website folder -->
+                <div class="photo-card glass"><img src="pic1.jpg" alt="Gallery Image 1" onerror="this.parentElement.style.display='none'"></div>
+                <div class="photo-card glass"><img src="pic2.jpg" alt="Gallery Image 2" onerror="this.parentElement.style.display='none'"></div>
+                <div class="photo-card glass"><img src="pic3.jpg" alt="Gallery Image 3" onerror="this.parentElement.style.display='none'"></div>
+                <div class="photo-card glass"><img src="pic4.jpg" alt="Gallery Image 4" onerror="this.parentElement.style.display='none'"></div>
+                <div class="photo-card glass"><img src="pic5.jpg" alt="Gallery Image 5" onerror="this.parentElement.style.display='none'"></div>
+                <div class="photo-card glass"><img src="pic6.jpg" alt="Gallery Image 6" onerror="this.parentElement.style.display='none'"></div>
+                <div class="photo-card glass"><img src="pic7.jpg" alt="Gallery Image 7" onerror="this.parentElement.style.display='none'"></div>
+                <div class="photo-card glass"><img src="pic8.jpg" alt="Gallery Image 8" onerror="this.parentElement.style.display='none'"></div>
+            </div>
+        </section>
+
+        <!-- Other Hobbies -->
+        <section class="other-hobbies reveal">
+            <div class="section-label">More About Me</div>
+            <h2>Other <span class="highlight">Interests</span></h2>
+            <div class="hobby-cards">
+                <div class="hobby-card glass-panel">
+                    <i class="fas fa-language" style="color:#ec4899"></i>
+                    <h3>Language Learning</h3>
+                    <p>Currently learning Mandarin Chinese through Duolingo. Elementary proficiency with a score of 18 and growing.</p>
+                </div>
+                <div class="hobby-card glass-panel">
+                    <i class="fas fa-laptop-code" style="color:#3b82f6"></i>
+                    <h3>Tech Exploration</h3>
+                    <p>Building side projects, testing security tools, and keeping up with the latest in networking and software trends.</p>
+                </div>
+                <div class="hobby-card glass-panel">
+                    <i class="fas fa-map-marked-alt" style="color:#10b981"></i>
+                    <h3>Outdoor & Travel</h3>
+                    <p>Exploring landscapes and cityscapes — my camera comes everywhere. Photography and travel go hand in hand.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Popup Image">
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Bijay Gupta. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

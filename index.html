@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bijay Gupta — Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Gradient Background Blobs -->
+    <div class="bg-shape shape1"></div>
+    <div class="bg-shape shape2"></div>
+    <div class="bg-shape shape3"></div>
+
+    <!-- Navigation -->
+    <nav id="main-nav">
+        <div id="nav-backdrop" class="nav-backdrop"></div>
+        <div class="nav-container glass" id="nav-container">
+            <a href="index.html" class="logo">Bijay.</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Profile</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="hobbies.html">Hobbies</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button id="theme-toggle" class="glass-btn icon-btn" title="Toggle Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        <button id="menu-btn" class="menu-btn glass-btn" title="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <main>
+
+        <!-- ══════════════════════════════════
+             HERO SECTION
+        ══════════════════════════════════ -->
+        <section class="hero-section">
+            <div class="hero-left">
+                <p class="hero-greeting">Hey there, I'm</p>
+                <h1 class="hero-name">Bijay <span class="highlight">Gupta</span></h1>
+                <p class="hero-tagline">
+                    <span id="typed-text"></span><span class="cursor">|</span>
+                </p>
+                <p class="hero-bio">
+                    A curious mind enrolled at <strong>Melbourne Institute of Technology</strong>, obsessed with technology, security, and capturing life through a camera lens.
+                </p>
+
+                <!-- Quick Social Links -->
+                <div class="hero-socials">
+                    <a href="https://instagram.com/bijaygupta048/" target="_blank" class="social-pill" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://github.com/bijay048" target="_blank" class="social-pill" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/bijaygupta048/" target="_blank" class="social-pill" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="contact.html" class="btn-primary">Get in Touch</a>
+                    <a href="education.html" class="btn-ghost">View Education</a>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="profile-ring">
+                    <img src="Profilepic.png" alt="Bijay Gupta" class="profile-img" id="profile-pic"
+                         onerror="this.src='https://via.placeholder.com/280'">
+                </div>
+                <!-- Floating badges around profile -->
+                <div class="float-badge badge-top">
+                    <i class="fas fa-shield-alt"></i> Cybersecurity
+                </div>
+                <div class="float-badge badge-right">
+                    <i class="fab fa-python"></i> Python
+                </div>
+                <div class="float-badge badge-bottom">
+                    <i class="fas fa-camera"></i> Photography
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════
+             WHAT I DO — 3 CARDS
+        ══════════════════════════════════ -->
+        <section class="what-i-do reveal">
+            <div class="section-label">What I Do</div>
+            <h2 class="section-title">My <span class="highlight">Focus Areas</span></h2>
+            <div class="cards-row">
+                <div class="focus-card glass-panel">
+                    <div class="focus-icon" style="--icon-color:#3b82f6">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Networking & Security</h3>
+                    <p>Building knowledge in network architecture, cybersecurity principles, and threat prevention through academic and self-driven study.</p>
+                </div>
+                <div class="focus-card glass-panel">
+                    <div class="focus-icon" style="--icon-color:#8b5cf6">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Programming</h3>
+                    <p>Writing clean Python code, automating tasks, and exploring programming concepts from data structures to scripting workflows.</p>
+                </div>
+                <div class="focus-card glass-panel">
+                    <div class="focus-icon" style="--icon-color:#ec4899">
+                        <i class="fas fa-camera-retro"></i>
+                    </div>
+                    <h3>Visual Storytelling</h3>
+                    <p>Capturing authentic moments through photography. Running a dedicated brand page across Instagram, TikTok and Facebook.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════
+             ABOUT ME — 2 COLUMN
+        ══════════════════════════════════ -->
+        <section class="about-section reveal">
+            <div class="about-left glass-panel">
+                <div class="section-label">Get to Know Me</div>
+                <h2>A Little <span class="highlight">About Me</span></h2>
+                <p>
+                    I'm a technology student and creative based in Australia, originally from Nepal. My journey started with a love for understanding how systems connect — from network packets to human experiences.
+                </p>
+                <p style="margin-top:1rem;">
+                    At MIT, I'm pursuing studies in Web & Multimedia, Networking, and Cybersecurity. Outside the classroom, I challenge myself daily — learning Mandarin Chinese on Duolingo, experimenting with code, and shooting photography under the brand <strong>1BG Photography</strong>.
+                </p>
+                <p style="margin-top:1rem;">
+                    I believe in learning by doing, connecting ideas across disciplines, and always showing up with curiosity.
+                </p>
+            </div>
+            <div class="about-right">
+                <div class="value-card glass-panel reveal-delay-1">
+                    <i class="fas fa-lightbulb" style="color:#f59e0b;font-size:2rem;margin-bottom:0.8rem;"></i>
+                    <h4>Curious Learner</h4>
+                    <p>Always exploring new fields — from Cisco certifications to language learning.</p>
+                </div>
+                <div class="value-card glass-panel reveal-delay-2">
+                    <i class="fas fa-users" style="color:#10b981;font-size:2rem;margin-bottom:0.8rem;"></i>
+                    <h4>Team Player</h4>
+                    <p>Leadership and communication are strengths built through real-world group experiences.</p>
+                </div>
+                <div class="value-card glass-panel reveal-delay-3">
+                    <i class="fas fa-eye" style="color:#3b82f6;font-size:2rem;margin-bottom:0.8rem;"></i>
+                    <h4>Detail-Oriented</h4>
+                    <p>Whether it's a security audit or a photograph, precision matters at every step.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════
+             TECH STACK / KNOWLEDGE PILLS
+        ══════════════════════════════════ -->
+        <section class="stack-section reveal">
+            <div class="glass-panel">
+                <div class="section-label">My Toolkit</div>
+                <h2>Knowledge & <span class="highlight">Technologies</span></h2>
+                <p style="margin-bottom:2rem;">Things I work with and concepts I've studied or certified in.</p>
+                <div class="stack-grid">
+                    <div class="stack-item">
+                        <i class="fab fa-python"></i>
+                        <span>Python</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Cybersecurity</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fas fa-network-wired"></i>
+                        <span>Networking</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>Project Mgmt</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fab fa-css3-alt"></i>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fas fa-language"></i>
+                        <span>Mandarin (Duolingo)</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Data Analysis</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Presentations</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fas fa-camera"></i>
+                        <span>Photography</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════
+             STATS STRIP
+        ══════════════════════════════════ -->
+        
+
+        <!-- ══════════════════════════════════
+             CURRENTLY LEARNING BANNER
+        ══════════════════════════════════ -->
+        <section class="learning-section reveal">
+            <div class="glass-panel learning-inner">
+                <div class="learning-left">
+                    <div class="section-label">Right Now</div>
+                    <h2>Currently <span class="highlight">Exploring</span></h2>
+                    <p>My focus shifts every semester — here's what I'm deep into lately.</p>
+                </div>
+                <div class="learning-items">
+                    <div class="learning-pill glass">
+                        <i class="fas fa-lock" style="color:#3b82f6"></i>
+                        <span>Advanced Cybersecurity Concepts</span>
+                    </div>
+                    <div class="learning-pill glass">
+                        <i class="fab fa-python" style="color:#f59e0b"></i>
+                        <span>Python for Automation</span>
+                    </div>
+                    <div class="learning-pill glass">
+                        <i class="fas fa-globe" style="color:#10b981"></i>
+                        <span>Web & Multimedia at MIT</span>
+                    </div>
+                    <div class="learning-pill glass">
+                        <i class="fas fa-language" style="color:#ec4899"></i>
+                        <span>Mandarin Chinese</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════
+             CALL TO ACTION
+        ══════════════════════════════════ -->
+        <section class="cta-section reveal">
+            <div class="cta-inner glass-panel">
+                <h2>Let's <span class="highlight">Connect</span></h2>
+                <p>Whether you want to talk tech, collaborate, or just say hi — my inbox is open.</p>
+                <div class="cta-actions">
+                    <a href="contact.html" class="btn-primary">Say Hello <i class="fas fa-arrow-right"></i></a>
+                    <a href="hobbies.html" class="btn-ghost">See My Hobbies</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Bijay Gupta. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
