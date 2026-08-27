@@ -757,18 +757,7 @@ footer {
 }
 
 @media (max-width: 768px) {
-    /* Hide inline nav links and enable mobile menu button */
     .nav-links { display: none; }
-
-    /* Ensure the floating menu button is visible by default on mobile (no need to scroll)
-       The JS will still toggle .menu-btn.visible and change the icon; this CSS makes it usable
-       when the page loads at the top on small screens. */
-    .menu-btn {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0) rotate(0);
-    }
-
     .hero-section { flex-direction: column; text-align: center; padding-top: 130px; min-height: unset; gap: 3rem; }
     .hero-right { width: 220px; height: 220px; order: -1; }
     .profile-ring { width: 210px; height: 210px; }
