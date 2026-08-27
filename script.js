@@ -36,20 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const navBackdrop  = document.getElementById('nav-backdrop');
     let menuOpen = false;
 
-    // Ensure mobile menu button is visible on small viewports without scrolling
-    function updateMenuBtnVisibilityOnViewport() {
-        if (window.innerWidth <= 768) {
-            if (!menuOpen) menuBtn.classList.add('visible');
-        } else {
-            // On larger screens follow scroll behavior (start hidden)
-            menuBtn.classList.remove('visible');
-        }
-    }
-    // Run on load
-    updateMenuBtnVisibilityOnViewport();
-    // Also adjust when the window is resized
-    window.addEventListener('resize', updateMenuBtnVisibilityOnViewport);
-
     window.addEventListener('scroll', () => {
         if (window.scrollY > 60) {
             if (!menuOpen) {
