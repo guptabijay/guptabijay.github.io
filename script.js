@@ -32,9 +32,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. SCROLL NAV — hide on scroll, show menu btn
     // ──────────────────────────────────────────
     const navContainer = document.getElementById('nav-container');
-    const menuBtn      = document.getElementById('menu-btn');
-    const navBackdrop  = document.getElementById('nav-backdrop');
+    const menuBtn = document.getElementById('menu-btn');
+    const navBackdrop = document.getElementById('nav-backdrop');
     let menuOpen = false;
+
+    // Ensure mobile menu button is visible on small viewports without scrolling
+    function updateMenuBtnVisibilityOnViewport() {
+        if (window.innerWidth <= 768) {
+            if (!menuOpen) {
+                menuBtn.classList.add('visible');
+                navContainer.classList.add('hidden');
+            }
+        } else {
+            // On larger screens follow scroll behavior
+            if (window.scrollY <= 60) {
+                menuBtn.classList.remove('visible');
+                navContainer.classList.remove('hidden');
+            }
+        }
+    }
+    // Run on load
+    updateMenuBtnVisibilityOnViewport();
+    // Also adjust when the window is resized
+    window.addEventListener('resize', updateMenuBtnVisibilityOnViewport);
 
     window.addEventListener('scroll', () => {
         if (window.scrollY > 60) {
@@ -44,11 +64,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 navBackdrop.classList.remove('active');
             }
         } else {
-            navContainer.classList.remove('hidden');
-            menuBtn.classList.remove('visible');
-            navBackdrop.classList.remove('active');
-            menuOpen = false;
-            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            if (window.innerWidth > 768) {
+                navContainer.classList.remove('hidden');
+                menuBtn.classList.remove('visible');
+                menuOpen = false;
+                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+            if (!menuOpen) {
+                navBackdrop.classList.remove('active');
+            }
         }
     });
 
@@ -159,9 +183,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // 7. LIGHTBOX (hobbies page only)
     // ──────────────────────────────────────────
     const sliderImages = document.querySelectorAll('.photo-slider img');
-    const lightbox     = document.getElementById('lightbox');
-    const lightboxImg  = document.getElementById('lightbox-img');
-    const closeBtn     = document.getElementById('lightbox-close');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('lightbox-close');
 
     if (lightbox && lightboxImg) {
         sliderImages.forEach(img => {
