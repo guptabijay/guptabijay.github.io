@@ -1030,7 +1030,7 @@ body.menu-open { overflow: hidden; }
     }
     .nav-links .nav-social-row { display: flex; justify-content: space-between; gap: .4rem; }
     .nav-links .nav-soc {
-        flex: 1; display: grid; place-items: center;
+        flex: 1; display: flex; align-items: center; justify-content: center;
         height: 40px; padding: 0; border-radius: 10px;
         border: 1px solid var(--line); background: transparent;
         transition: background-color .2s ease, border-color .2s ease, transform .25s var(--ease);
