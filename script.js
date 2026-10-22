@@ -22,17 +22,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ── Mobile menu
+    // ── Mobile menu: floating panel on the right
     const header = document.querySelector('.site-header');
     const menuBtn = document.getElementById('menu-btn');
     if (header && menuBtn) {
+        const scrim = document.createElement('div');
+        scrim.className = 'nav-scrim';
+        document.body.appendChild(scrim);
+        const panel = document.getElementById('nav-links');
         const setMenu = (open) => {
             header.classList.toggle('open', open);
+            scrim.classList.toggle('show', open);
             menuBtn.setAttribute('aria-expanded', String(open));
-            menuBtn.querySelector('i').className = open ? 'fas fa-xmark' : 'fas fa-bars';
+            menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            if (open && panel) {
+                const first = panel.querySelector('a');
+                if (first) setTimeout(() => first.focus({ preventScroll: true }), 150);
+            }
         };
         menuBtn.addEventListener('click', () => setMenu(!header.classList.contains('open')));
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+        scrim.addEventListener('click', () => setMenu(false));
+        if (panel) panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && header.classList.contains('open')) { setMenu(false); menuBtn.focus(); }
+        });
         window.addEventListener('resize', () => { if (window.innerWidth > 720) setMenu(false); });
     }
 
