@@ -6,46 +6,43 @@
     <title>Contact — Bijay Gupta</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="theme-color" content="#f5f7fa">
+    <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
 </head>
 <body>
-    <div class="bg-shape shape1"></div>
-    <div class="bg-shape shape2"></div>
-    <div class="bg-shape shape3"></div>
 
-    <nav id="main-nav">
-        <div id="nav-backdrop" class="nav-backdrop"></div>
-        <div class="nav-container glass" id="nav-container">
-            <a href="index.html" class="logo">Bijay.</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Profile</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="hobbies.html">Hobbies</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
-            </ul>
-            <button id="theme-toggle" class="glass-btn icon-btn" title="Toggle Theme">
-                <i class="fas fa-moon"></i>
-            </button>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo"><span class="logo-mark">bg</span>Bijay Gupta</a>
+            <nav class="nav-links" id="nav-links" aria-label="Main">
+                <ul>
+                    <li><a href="index.html">Profile</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="hobbies.html">Hobbies</a></li>
+                    <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch theme"><i class="fas fa-moon"></i></button>
+                <button id="menu-btn" class="icon-btn menu-btn" type="button" aria-label="Menu" aria-controls="nav-links" aria-expanded="false"><i class="fas fa-bars"></i></button>
+            </div>
         </div>
-        <button id="menu-btn" class="menu-btn glass-btn" title="Menu">
-            <i class="fas fa-bars"></i>
-        </button>
-    </nav>
+    </header>
 
     <main class="inner-page">
 
         <!-- Page Header -->
         <div class="page-header reveal">
-            <div class="section-label">Let's Connect</div>
-            <h1>Get In <span class="highlight">Touch</span></h1>
+            <h1>Get In Touch</h1>
             <p>Whether it's a collaboration, a question, or just a hello — I'd love to hear from you.</p>
         </div>
 
         <!-- Social Platforms -->
         <section class="contact-social reveal">
-            <h2>Find Me <span class="highlight">Online</span></h2>
+            <h2>Find Me Online</h2>
             <p style="margin-bottom:2.5rem;">My personal accounts across the web.</p>
             <div class="contact-cards-grid">
-                <a href="https://instagram.com/bijaygupta048/" target="_blank" class="contact-platform-card glass-panel">
+                <a href="https://instagram.com/bijaygupta048/" target="_blank" rel="noopener" class="contact-platform-card glass-panel">
                     <div class="platform-icon insta-bg">
                         <i class="fab fa-instagram"></i>
                     </div>
@@ -55,7 +52,7 @@
                     </div>
                     <i class="fas fa-arrow-right platform-arrow"></i>
                 </a>
-                <a href="https://github.com/guptabijay" target="_blank" class="contact-platform-card glass-panel">
+                <a href="https://github.com/guptabijay" target="_blank" rel="noopener" class="contact-platform-card glass-panel">
                     <div class="platform-icon github-bg">
                         <i class="fab fa-github"></i>
                     </div>
@@ -65,7 +62,7 @@
                     </div>
                     <i class="fas fa-arrow-right platform-arrow"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/bijaygupta048/" target="_blank" class="contact-platform-card glass-panel">
+                <a href="https://www.linkedin.com/in/bijaygupta048/" target="_blank" rel="noopener" class="contact-platform-card glass-panel">
                     <div class="platform-icon linkedin-bg">
                         <i class="fab fa-linkedin-in"></i>
                     </div>
@@ -81,17 +78,16 @@
         <!-- Photography Brand Socials -->
         <section class="contact-photography reveal">
             <div class="glass-panel">
-                <div class="section-label">Photography Brand</div>
-                <h2>1BG <span class="highlight">Photography</span></h2>
+                <h2>1BG Photography</h2>
                 <p style="margin-bottom:2rem;">Follow my photography journey on these platforms.</p>
                 <div class="photo-social-row">
-                    <a href="https://www.tiktok.com/@1bgphotography" target="_blank" class="social-btn glass-btn tiktok">
+                    <a href="https://www.tiktok.com/@1bgphotography" target="_blank" rel="noopener" class="social-btn glass-btn tiktok">
                         <i class="fab fa-tiktok"></i> TikTok
                     </a>
-                    <a href="https://www.instagram.com/1bgphotography/" target="_blank" class="social-btn glass-btn insta">
+                    <a href="https://www.instagram.com/1bgphotography/" target="_blank" rel="noopener" class="social-btn glass-btn insta">
                         <i class="fab fa-instagram"></i> Instagram
                     </a>
-                    <a href="https://www.facebook.com/1bgphotography/" target="_blank" class="social-btn glass-btn fb">
+                    <a href="https://www.facebook.com/1bgphotography/" target="_blank" rel="noopener" class="social-btn glass-btn fb">
                         <i class="fab fa-facebook-f"></i> Facebook
                     </a>
                 </div>
@@ -101,10 +97,9 @@
         <!-- Credentials -->
         <section class="contact-credentials reveal">
             <div class="glass-panel">
-                <div class="section-label">Verified</div>
-                <h2>My Credly <span class="highlight">Profile</span></h2>
+                <h2>My Credly Profile</h2>
                 <p style="margin-bottom:2rem;">View my verified certifications on Credly.</p>
-                <a href="https://www.credly.com/users/bijay-gupta.a5e52fb8" target="_blank" class="credly-btn glass-btn">
+                <a href="https://www.credly.com/users/bijay-gupta.a5e52fb8" target="_blank" rel="noopener" class="credly-btn glass-btn">
                     <i class="fas fa-award"></i> View My Credly Dashboard
                 </a>
             </div>
@@ -113,7 +108,10 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Bijay Gupta. All rights reserved.</p>
+        <div class="footer-inner">
+            <p>&copy; 2026 Bijay Gupta</p>
+            <p>Hand-coded in HTML, CSS and JavaScript. Hosted on <a href="https://github.com/guptabijay/guptabijay.github.io" target="_blank" rel="noopener">GitHub Pages</a>.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>

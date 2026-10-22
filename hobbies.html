@@ -6,89 +6,99 @@
     <title>Hobbies — Bijay Gupta</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="theme-color" content="#f5f7fa">
+    <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
 </head>
 <body>
-    <div class="bg-shape shape1"></div>
-    <div class="bg-shape shape2"></div>
-    <div class="bg-shape shape3"></div>
 
-    <nav id="main-nav">
-        <div id="nav-backdrop" class="nav-backdrop"></div>
-        <div class="nav-container glass" id="nav-container">
-            <a href="index.html" class="logo">Bijay.</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Profile</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="hobbies.html" class="active">Hobbies</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <button id="theme-toggle" class="glass-btn icon-btn" title="Toggle Theme">
-                <i class="fas fa-moon"></i>
-            </button>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo"><span class="logo-mark">bg</span>Bijay Gupta</a>
+            <nav class="nav-links" id="nav-links" aria-label="Main">
+                <ul>
+                    <li><a href="index.html">Profile</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="hobbies.html" class="active" aria-current="page">Hobbies</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch theme"><i class="fas fa-moon"></i></button>
+                <button id="menu-btn" class="icon-btn menu-btn" type="button" aria-label="Menu" aria-controls="nav-links" aria-expanded="false"><i class="fas fa-bars"></i></button>
+            </div>
         </div>
-        <button id="menu-btn" class="menu-btn glass-btn" title="Menu">
-            <i class="fas fa-bars"></i>
-        </button>
-    </nav>
+    </header>
 
     <main class="inner-page">
 
         <!-- Page Header -->
         <div class="page-header reveal">
-            <div class="section-label">Beyond the Classroom</div>
-            <h1>My <span class="highlight">Hobbies</span></h1>
+            <h1>My Hobbies</h1>
             <p>What I do when I'm not studying — creativity, community and capturing the world.</p>
         </div>
 
         <!-- Photography Brand Section -->
         <section class="photography-brand reveal">
             <div class="brand-card glass-panel">
-                <div class="brand-left">
-                    <div class="brand-logo-circle">
-                        <i class="fas fa-camera-retro"></i>
-                    </div>
-                    <div>
+                <div class="brand-head">
+                    <div class="brand-logo-circle"><i class="fas fa-camera-retro"></i></div>
+                    <div class="brand-id">
                         <h2>1BG Photography</h2>
-                        <p class="brand-tagline">My personal photography brand — capturing genuine moments, landscapes and stories through the lens.</p>
-                        <div class="brand-socials">
-                            <a href="https://www.tiktok.com/@1bgphotography" target="_blank" class="social-btn glass-btn tiktok">
-                                <i class="fab fa-tiktok"></i> TikTok
-                            </a>
-                            <a href="https://www.instagram.com/1bgphotography/" target="_blank" class="social-btn glass-btn insta">
-                                <i class="fab fa-instagram"></i> Instagram
-                            </a>
-                            <a href="https://www.facebook.com/1bgphotography/" target="_blank" class="social-btn glass-btn fb">
-                                <i class="fab fa-facebook-f"></i> Facebook
-                            </a>
-                        </div>
+                        <a class="brand-handle" href="https://www.instagram.com/1bgphotography/" target="_blank" rel="noopener">@1bgphotography</a>
                     </div>
+                </div>
+                <p class="brand-tagline">My personal photography brand. Mostly city lights, flowers and the odd bird, shot around Sydney and wherever I travel.</p>
+                <div class="brand-shoots">
+                    <span class="tag"><i class="fas fa-city"></i> Cityscapes</span>
+                    <span class="tag"><i class="fas fa-moon"></i> Night</span>
+                    <span class="tag"><i class="fas fa-seedling"></i> Nature &amp; macro</span>
+                </div>
+                <div class="brand-socials">
+                    <a href="https://www.instagram.com/1bgphotography/" target="_blank" rel="noopener" class="social-btn insta"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+                    <a href="https://www.tiktok.com/@1bgphotography" target="_blank" rel="noopener" class="social-btn tiktok"><i class="fab fa-tiktok"></i><span>TikTok</span></a>
+                    <a href="https://www.facebook.com/1bgphotography/" target="_blank" rel="noopener" class="social-btn fb"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+                    <a href="#gallery" class="social-btn gallery-jump"><i class="fas fa-images"></i><span>View gallery</span></a>
                 </div>
             </div>
         </section>
 
-        <!-- Photo Gallery Slider -->
-        <section class="gallery-section reveal">
-            <div class="section-label">Gallery</div>
-            <h2>My <span class="highlight">Photography</span></h2>
-            <p style="margin-bottom:2rem;">Click on any image to view it in full size.</p>
-
-            <div class="photo-slider" id="photo-slider">
-                <!-- Replace src with your own image filenames placed in the portfolio_website folder -->
-                <div class="photo-card glass"><img src="pic1.jpg" alt="Gallery Image 1" onerror="this.parentElement.style.display='none'"></div>
-                <div class="photo-card glass"><img src="pic2.jpg" alt="Gallery Image 2" onerror="this.parentElement.style.display='none'"></div>
-                <div class="photo-card glass"><img src="pic3.jpg" alt="Gallery Image 3" onerror="this.parentElement.style.display='none'"></div>
-                <div class="photo-card glass"><img src="pic4.jpg" alt="Gallery Image 4" onerror="this.parentElement.style.display='none'"></div>
-                <div class="photo-card glass"><img src="pic5.jpg" alt="Gallery Image 5" onerror="this.parentElement.style.display='none'"></div>
-                <div class="photo-card glass"><img src="pic6.jpg" alt="Gallery Image 6" onerror="this.parentElement.style.display='none'"></div>
-                <div class="photo-card glass"><img src="pic7.jpg" alt="Gallery Image 7" onerror="this.parentElement.style.display='none'"></div>
-                <div class="photo-card glass"><img src="pic8.jpg" alt="Gallery Image 8" onerror="this.parentElement.style.display='none'"></div>
+        <!-- Photo Gallery -->
+        <section class="gallery-section reveal" id="gallery">
+            <div class="gallery-head">
+                <div>
+                    <h2>Gallery</h2>
+                    <p>Slide through my shots. Tap one to open it full size.</p>
+                </div>
+                <div class="slider-controls">
+                    <button type="button" class="slider-btn" id="slide-prev" aria-label="Previous photos"><i class="fas fa-chevron-left"></i></button>
+                    <button type="button" class="slider-btn" id="slide-next" aria-label="Next photos"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="slider">
+                <div class="photo-slider" id="photo-slider" tabindex="0" aria-label="Photo gallery">
+                    <figure class="photo-card" data-title="Wildflowers" data-desc="Yellow daisies shot up close against a dark background."><img src="pic1.jpg" alt="Wildflowers. Yellow daisies shot up close against a dark background." width="1290" height="2048" decoding="async" draggable="false" onerror="this.parentElement.remove()"></figure>
+                    <figure class="photo-card" data-title="Magnolia in bloom" data-desc="Magnolia petals still wet after the rain."><img src="pic2.jpg" alt="Magnolia in bloom. Magnolia petals still wet after the rain." width="1536" height="2048" decoding="async" draggable="false" onerror="this.parentElement.remove()"></figure>
+                    <figure class="photo-card" data-title="City at dusk" data-desc="Sunset squeezed between two towers, with the city lights below."><img src="pic3.jpg" alt="City at dusk. Sunset squeezed between two towers, with the city lights below." width="1339" height="2048" decoding="async" draggable="false" onerror="this.parentElement.remove()"></figure>
+                    <figure class="photo-card" data-title="Golden tower" data-desc="Late sun lighting up a tower under a stormy sky."><img src="pic4.jpg" alt="Golden tower. Late sun lighting up a tower under a stormy sky." width="1537" height="2048" decoding="async" draggable="false" onerror="this.parentElement.remove()"></figure>
+                    <figure class="photo-card" data-title="Opera House at Vivid" data-desc="The Sydney Opera House sails lit up for Vivid Sydney."><img src="pic5.jpg" alt="Opera House at Vivid. The Sydney Opera House sails lit up for Vivid Sydney." width="2048" height="1536" decoding="async" draggable="false" onerror="this.parentElement.remove()"></figure>
+                    <figure class="photo-card" data-title="Silver gull" data-desc="A silver gull standing still on a wet street at night."><img src="pic6.jpg" alt="Silver gull. A silver gull standing still on a wet street at night." width="1153" height="2048" decoding="async" draggable="false" onerror="this.parentElement.remove()"></figure>
+                    <figure class="photo-card" data-title="Cruise ship at night" data-desc="A cruise ship lit up on the harbour after dark."><img src="pic7.jpg" alt="Cruise ship at night. A cruise ship lit up on the harbour after dark." width="2048" height="1153" decoding="async" draggable="false" onerror="this.parentElement.remove()"></figure>
+                    <figure class="photo-card" data-title="Red sky" data-desc="A fiery sunset over a rainy street."><img src="pic8.jpg" alt="Red sky. A fiery sunset over a rainy street." width="1536" height="2048" decoding="async" draggable="false" onerror="this.parentElement.remove()"></figure>
+                </div>
+            </div>
+            <div class="slide-info" aria-live="polite">
+                <span class="slide-count" id="slide-count">1 / 8</span>
+                <div class="slide-text">
+                    <h3 id="slide-title">Wildflowers</h3>
+                    <p id="slide-desc">Yellow daisies shot up close against a dark background.</p>
+                </div>
+                <div class="slider-dots" id="slider-dots" aria-hidden="true"></div>
             </div>
         </section>
 
         <!-- Other Hobbies -->
         <section class="other-hobbies reveal">
-            <div class="section-label">More About Me</div>
-            <h2>Other <span class="highlight">Interests</span></h2>
+            <h2>Other Interests</h2>
             <div class="hobby-cards">
                 <div class="hobby-card glass-panel">
                     <i class="fas fa-language" style="color:#ec4899"></i>
@@ -112,12 +122,16 @@
 
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
-        <span class="lightbox-close" id="lightbox-close">&times;</span>
-        <img id="lightbox-img" src="" alt="Popup Image">
+        <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+        <div class="lightbox-meta"><span id="lightbox-caption"></span><span id="lightbox-count"></span></div>
     </div>
 
     <footer>
-        <p>&copy; 2026 Bijay Gupta. All rights reserved.</p>
+        <div class="footer-inner">
+            <p>&copy; 2026 Bijay Gupta</p>
+            <p>Hand-coded in HTML, CSS and JavaScript. Hosted on <a href="https://github.com/guptabijay/guptabijay.github.io" target="_blank" rel="noopener">GitHub Pages</a>.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
