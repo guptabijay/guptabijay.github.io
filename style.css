@@ -961,9 +961,17 @@ body::after {
 .site-header.open .menu-btn i { transform: rotate(90deg); }
 .site-header.open .menu-btn i::before { content: "\f00d"; }
 
-/* invisible layer that closes the menu when you tap outside it */
-.nav-scrim { position: fixed; inset: 0; z-index: 999; display: none; background: transparent; }
-.nav-scrim.show { display: block; }
+/* blurred layer behind the menu — tap it to close */
+.nav-scrim {
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(10, 16, 26, .28);
+    backdrop-filter: blur(10px) saturate(120%); -webkit-backdrop-filter: blur(10px) saturate(120%);
+    opacity: 0; visibility: hidden;
+    transition: opacity .3s ease, visibility 0s linear .3s;
+}
+.nav-scrim.show { opacity: 1; visibility: visible; transition: opacity .3s ease, visibility 0s; }
+[data-theme="dark"] .nav-scrim { background: rgba(0, 0, 0, .45); }
+body.menu-open { overflow: hidden; }
 
 @media (max-width: 720px) {
     .site-header.open { box-shadow: none; }
@@ -975,7 +983,7 @@ body::after {
         background: var(--surface-solid);
         border: 1px solid var(--line);
         border-radius: 16px;
-        box-shadow: 0 4px 10px rgba(10, 20, 35, .10), 0 18px 40px rgba(10, 20, 35, .22);
+        box-shadow: 0 6px 14px rgba(10, 20, 35, .14), 0 24px 60px rgba(10, 20, 35, .35);
         transform-origin: top right;
         opacity: 0; visibility: hidden; pointer-events: none;
         transform: translateY(-6px) scale(.9);

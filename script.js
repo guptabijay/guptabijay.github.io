@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const setMenu = (open) => {
             header.classList.toggle('open', open);
             scrim.classList.toggle('show', open);
+            document.body.classList.toggle('menu-open', open);
             menuBtn.setAttribute('aria-expanded', String(open));
             menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
             if (open && panel) {
