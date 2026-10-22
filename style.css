@@ -1028,23 +1028,23 @@ body.menu-open { overflow: hidden; }
         margin-top: .35rem; padding: .55rem .35rem .2rem;
         border-top: 1px solid var(--line);
     }
-    .nav-links .nav-social-row { display: flex; justify-content: space-between; gap: .4rem; }
+    .nav-links .nav-social-row { display: flex; justify-content: center; gap: .6rem; }
     .nav-links .nav-soc {
-        flex: 1; display: flex; align-items: center; justify-content: center;
-        height: 40px; padding: 0; border-radius: 10px;
-        border: 1px solid var(--line); background: transparent;
-        transition: background-color .2s ease, border-color .2s ease, transform .25s var(--ease);
+        flex: 0 0 auto; width: 40px; height: 40px;
+        display: flex; align-items: center; justify-content: center;
+        padding: 0; border: 0; border-radius: 50%; background: transparent;
+        transition: transform .25s var(--ease);
     }
-    .nav-links .nav-soc i { font-size: 1.1rem; transition: color .2s ease; }
+    .nav-links .nav-soc:hover, .nav-links .nav-soc:focus-visible, .nav-links .nav-soc:active { background: transparent; transform: translateY(-2px) scale(1.12); }
+    .nav-links .nav-soc i {
+        font-size: 1.35rem;
+        filter: drop-shadow(0 3px 5px rgba(10, 20, 35, .28));
+    }
+    [data-theme="dark"] .nav-links .nav-soc i { filter: drop-shadow(0 3px 6px rgba(0, 0, 0, .6)); }
     .nav-links .nav-soc.gh i { color: var(--ink); }
     .nav-links .nav-soc.li i { color: #0a66c2; }
     .nav-links .nav-soc.ig i { color: #d62976; }
     [data-theme="dark"] .nav-links .nav-soc.li i { color: #4d9fec; }
-    .nav-links .nav-soc:hover, .nav-links .nav-soc:active { transform: translateY(-2px); }
-    .nav-links .nav-soc:hover i, .nav-links .nav-soc:active i { color: #fff; }
-    .nav-links .nav-soc.gh:hover, .nav-links .nav-soc.gh:active { background: #24292e; border-color: #24292e; }
-    .nav-links .nav-soc.li:hover, .nav-links .nav-soc.li:active { background: #0a66c2; border-color: #0a66c2; }
-    .nav-links .nav-soc.ig:hover, .nav-links .nav-soc.ig:active { background: linear-gradient(45deg, #fa7e1e, #d62976 55%, #962fbf); border-color: #d62976; }
 }
 
 @media (prefers-reduced-motion: reduce) {
