@@ -1,26 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // ── Theme toggle (remembers choice, falls back to system setting)
-    const themeBtn = document.getElementById('theme-toggle');
+    // ── Theme switch (sun/moon toggle) — remembers choice, falls back to system setting
     const root = document.documentElement;
-    const icon = themeBtn ? themeBtn.querySelector('i') : null;
+    const themeBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-menu')].filter(Boolean);
     const setTheme = (dark) => {
         if (dark) root.setAttribute('data-theme', 'dark');
         else root.removeAttribute('data-theme');
-        if (icon) icon.className = dark ? 'fas fa-sun' : 'fas fa-moon';
-        if (themeBtn) themeBtn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+        themeBtns.forEach(btn => {
+            if (btn.getAttribute('role') === 'switch') btn.setAttribute('aria-checked', String(dark));
+            const i = btn.classList.contains('theme-mini') ? btn.querySelector('i') : null;
+            if (i) i.className = dark ? 'fas fa-sun' : 'fas fa-moon';
+        });
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', dark ? '#0e141b' : '#f5f7fa');
     };
     let saved = null;
     try { saved = localStorage.getItem('theme'); } catch (e) {}
     setTheme(saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
-    if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
-            const dark = root.getAttribute('data-theme') !== 'dark';
-            setTheme(dark);
-            try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
-        });
-    }
+    themeBtns.forEach(btn => btn.addEventListener('click', () => {
+        const dark = root.getAttribute('data-theme') !== 'dark';
+        setTheme(dark);
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+    }));
 
     // ── Mobile menu: floating panel on the right
     const header = document.querySelector('.site-header');
@@ -96,11 +98,80 @@ document.addEventListener('DOMContentLoaded', () => {
         bars.forEach(b => b.classList.add('animated'));
     }
 
-    // ── Header gets a solid background once you scroll
+    // ── Header: solid once you scroll; on phones the bar folds into the menu button
     if (header) {
-        const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+        const mobile = window.matchMedia('(max-width: 720px)');
+        const onScroll = () => {
+            const y = window.scrollY;
+            header.classList.toggle('scrolled', y > 8);
+            const compact = mobile.matches && y > 80;
+            if (!compact && header.classList.contains('compact') && header.classList.contains('open')) {
+                menuBtn && menuBtn.click();
+            }
+            header.classList.toggle('compact', compact);
+        };
         window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
         onScroll();
+    }
+
+    // ── Tap the profile photo: it grows (not full screen) with a little spin, page blurs
+    const profileBtn = document.getElementById('profile-open');
+    if (profileBtn) {
+        const src = profileBtn.querySelector('img');
+        const overlay = document.createElement('div');
+        overlay.className = 'photo-zoom';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-label', 'Profile photo');
+        overlay.innerHTML = '<img alt="Portrait of Bijay Gupta">';
+        document.body.appendChild(overlay);
+        const big = overlay.querySelector('img');
+        big.src = src.src;
+        let isOpen = false;
+
+        const targetRect = () => {
+            const w = Math.min(window.innerWidth * 0.78, 380);
+            const h = w * 1.25;
+            return { w, h, x: (window.innerWidth - w) / 2, y: Math.max(16, (window.innerHeight - h) / 2) };
+        };
+        const openZoom = () => {
+            if (isOpen) return;
+            isOpen = true;
+            const r = src.getBoundingClientRect();
+            const t = targetRect();
+            Object.assign(big.style, { left: t.x + 'px', top: t.y + 'px', width: t.w + 'px', height: t.h + 'px' });
+            overlay.classList.add('show');
+            document.body.classList.add('menu-open');
+            profileBtn.classList.add('lifted');
+            if (reduceMotion) return;
+            const dx = r.left - t.x, dy = r.top - t.y, s = r.width / t.w;
+            big.animate([
+                { transform: `translate(${dx}px, ${dy}px) scale(${s}) rotate(0deg)`, borderRadius: '12px' },
+                { transform: 'translate(0,0) scale(1.04) rotate(-8deg)', offset: 0.6 },
+                { transform: 'translate(0,0) scale(1) rotate(0deg)', borderRadius: '20px' }
+            ], { duration: 650, easing: 'cubic-bezier(.2,.8,.2,1)' });
+        };
+        const closeZoom = () => {
+            if (!isOpen) return;
+            isOpen = false;
+            const finish = () => {
+                overlay.classList.remove('show');
+                document.body.classList.remove('menu-open');
+                profileBtn.classList.remove('lifted');
+            };
+            if (reduceMotion) return finish();
+            const r = src.getBoundingClientRect();
+            const t = targetRect();
+            const dx = r.left - t.x, dy = r.top - t.y, s = r.width / t.w;
+            overlay.classList.add('closing');
+            big.animate([
+                { transform: 'translate(0,0) scale(1) rotate(0deg)', borderRadius: '20px' },
+                { transform: `translate(${dx}px, ${dy}px) scale(${s}) rotate(6deg)`, borderRadius: '12px' }
+            ], { duration: 420, easing: 'cubic-bezier(.4,0,.2,1)' }).onfinish = () => { overlay.classList.remove('closing'); finish(); };
+        };
+        profileBtn.addEventListener('click', openZoom);
+        overlay.addEventListener('click', closeZoom);
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeZoom(); });
     }
 
     // ── Scroll reveal with staggered children

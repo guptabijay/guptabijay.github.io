@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hobbies — Bijay Gupta</title>
-    <link rel="stylesheet" href="style.css?v=8">
+    <link rel="stylesheet" href="style.css?v=10">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta name="theme-color" content="#f5f7fa">
     <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
@@ -13,7 +13,7 @@
 
     <header class="site-header">
         <div class="header-inner">
-            <a href="index.html" class="logo"><span class="logo-mark">bg</span>Bijay Gupta</a>
+            <a href="index.html" class="logo" aria-label="Bijay Gupta, home"><span class="logo-mark">bg</span></a>
             <nav class="nav-links" id="nav-links" aria-label="Main">
                 <ul>
                     <li><a href="index.html">Profile</a></li>
@@ -30,7 +30,9 @@
                 </div>
             </nav>
             <div class="header-actions">
-                <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch theme"><i class="fas fa-moon"></i></button>
+                <button id="theme-toggle" class="theme-switch" type="button" role="switch" aria-checked="false" aria-label="Dark mode">
+                    <span class="ts-track"><i class="fas fa-sun ts-sun"></i><i class="fas fa-moon ts-moon"></i><span class="ts-knob"></span></span>
+                </button>
                 <button id="menu-btn" class="icon-btn menu-btn" type="button" aria-label="Menu" aria-controls="nav-links" aria-expanded="false"><i class="fas fa-bars"></i></button>
             </div>
         </div>
@@ -136,11 +138,10 @@
 
     <footer>
         <div class="footer-inner">
-            <p>&copy; 2026 Bijay Gupta</p>
-            <p>Hand-coded in HTML, CSS and JavaScript. Hosted on <a href="https://github.com/guptabijay/guptabijay.github.io" target="_blank" rel="noopener">GitHub Pages</a>.</p>
+            <p>&copy; 2026 Bijay Gupta. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="script.js?v=8"></script>
+    <script src="script.js?v=10"></script>
 </body>
 </html>
