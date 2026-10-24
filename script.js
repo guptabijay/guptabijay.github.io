@@ -82,9 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
             pill.style.transform = `translateX(${li.offsetLeft + a.offsetLeft}px)`;
             pill.classList.add('ready');
         };
+        let current = activeLink;
         const reset = (instant) => {
             if (instant) pill.classList.add('no-anim');
-            moveTo(activeLink);
+            moveTo(current);
             if (instant) requestAnimationFrame(() => requestAnimationFrame(() => pill.classList.remove('no-anim')));
         };
         const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -93,11 +94,44 @@ document.addEventListener('DOMContentLoaded', () => {
             a.addEventListener('focus', () => { if (a.matches(':focus-visible')) moveTo(a); });
         });
         navList.addEventListener('mouseleave', () => reset(false));
+
+        // Tap / click a page link: slide the pill there first, then open the page
+        const pillVisible = () => getComputedStyle(pill).display !== 'none' && pill.offsetWidth > 0;
+        links.forEach((a, i) => {
+            a.addEventListener('click', e => {
+                const remember = () => { try { sessionStorage.setItem('navFrom', String(links.indexOf(activeLink))); } catch (err) {} };
+                if (a === activeLink) return;
+                if (reduceMotion || !pillVisible() || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return remember();
+                e.preventDefault();
+                current = a;
+                moveTo(a);
+                links.forEach(l => l.classList.toggle('active', l === a));
+                setTimeout(() => { window.location.href = a.href; }, 380);
+            });
+        });
+
+        // Arriving on a page: start the pill on the link you came from and slide it over
+        let from = null;
+        try { from = sessionStorage.getItem('navFrom'); sessionStorage.removeItem('navFrom'); } catch (err) {}
+        const fromLink = from !== null ? links[Number(from)] : null;
+        const slideIn = !!(fromLink && fromLink !== activeLink && !reduceMotion && pillVisible());
+        if (slideIn) {
+            pill.classList.add('no-anim');
+            moveTo(fromLink);
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+                pill.classList.remove('no-anim');
+                moveTo(activeLink);
+            }));
+        }
         navList.addEventListener('focusout', e => { if (!navList.contains(e.relatedTarget)) reset(false); });
-        if ('ResizeObserver' in window) new ResizeObserver(() => reset(true)).observe(navList);
-        window.addEventListener('load', () => reset(true));
-        if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => reset(true));
-        reset(true);
+        let lastW = 0;
+        if ('ResizeObserver' in window) new ResizeObserver(() => {
+            const w = navList.offsetWidth;
+            if (lastW && Math.abs(w - lastW) > 1) reset(true);
+            lastW = w;
+        }).observe(navList);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => setTimeout(() => moveTo(current), slideIn ? 450 : 0));
+        if (!slideIn) reset(true);
     }
 
     // ── Grid lines glow around the pointer
