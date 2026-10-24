@@ -52,6 +52,75 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', () => { if (window.innerWidth > 720) setMenu(false); });
     }
 
+    // ── macOS terminal: live "Last login" line (traffic lights are decorative)
+    const term = document.getElementById('terminal');
+    if (term) {
+        const ll = document.getElementById('last-login');
+        if (ll) {
+            const d = new Date();
+            const day = d.toLocaleDateString('en-AU', { weekday: 'short' });
+            const mon = d.toLocaleDateString('en-AU', { month: 'short' });
+            const time = d.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit', hour12: false });
+            ll.textContent = `Last login: ${day} ${mon} ${d.getDate()} ${time} on ttys001`;
+        }
+
+    }
+
+    // ── Pill highlight that slides between nav links
+    const navList = document.querySelector('.nav-links ul');
+    if (navList) {
+        const pill = document.createElement('span');
+        pill.className = 'nav-pill no-anim';
+        pill.setAttribute('aria-hidden', 'true');
+        navList.prepend(pill);
+        const links = [...navList.querySelectorAll('a')];
+        const activeLink = navList.querySelector('a.active') || links[0];
+        const moveTo = (a) => {
+            if (!a || !a.offsetWidth) return;
+            const li = a.parentElement;
+            pill.style.width = `${a.offsetWidth}px`;
+            pill.style.transform = `translateX(${li.offsetLeft + a.offsetLeft}px)`;
+            pill.classList.add('ready');
+        };
+        const reset = (instant) => {
+            if (instant) pill.classList.add('no-anim');
+            moveTo(activeLink);
+            if (instant) requestAnimationFrame(() => requestAnimationFrame(() => pill.classList.remove('no-anim')));
+        };
+        links.forEach(a => {
+            a.addEventListener('mouseenter', () => moveTo(a));
+            a.addEventListener('focus', () => moveTo(a));
+        });
+        navList.addEventListener('mouseleave', () => reset(false));
+        navList.addEventListener('focusout', e => { if (!navList.contains(e.relatedTarget)) reset(false); });
+        if ('ResizeObserver' in window) new ResizeObserver(() => reset(true)).observe(navList);
+        window.addEventListener('load', () => reset(true));
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => reset(true));
+        reset(true);
+    }
+
+    // ── Grid lines glow around the pointer
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduceMotion) {
+        const glow = document.createElement('div');
+        glow.className = 'grid-glow';
+        const bloom = document.createElement('div');
+        bloom.className = 'grid-bloom';
+        document.body.prepend(bloom, glow);
+        let gx = 0, gy = 0, queued = false;
+        window.addEventListener('pointermove', e => {
+            gx = e.clientX; gy = e.clientY;
+            glow.classList.add('on'); bloom.classList.add('on');
+            if (queued) return;
+            queued = true;
+            requestAnimationFrame(() => {
+                document.documentElement.style.setProperty('--gx', `${gx}px`);
+                document.documentElement.style.setProperty('--gy', `${gy}px`);
+                queued = false;
+            });
+        }, { passive: true });
+        document.documentElement.addEventListener('pointerleave', () => { glow.classList.remove('on'); bloom.classList.remove('on'); });
+    }
+
     // ── Hero terminal: print lines one by one, then cycle the last line
     const lines = document.querySelectorAll('.term-line');
     const typedEl = document.getElementById('typed-text');
