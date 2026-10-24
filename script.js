@@ -87,9 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
             moveTo(activeLink);
             if (instant) requestAnimationFrame(() => requestAnimationFrame(() => pill.classList.remove('no-anim')));
         };
+        const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
         links.forEach(a => {
-            a.addEventListener('mouseenter', () => moveTo(a));
-            a.addEventListener('focus', () => moveTo(a));
+            if (canHover) a.addEventListener('mouseenter', () => moveTo(a));
+            a.addEventListener('focus', () => { if (a.matches(':focus-visible')) moveTo(a); });
         });
         navList.addEventListener('mouseleave', () => reset(false));
         navList.addEventListener('focusout', e => { if (!navList.contains(e.relatedTarget)) reset(false); });

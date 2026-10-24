@@ -1605,3 +1605,8 @@ html:not(.js) .nav-links a.active { background: color-mix(in srgb, var(--accent)
 .tl svg { opacity: 1; }
 .tl { pointer-events: none; }
 .tl path.fill { fill: rgba(0, 0, 0, .6); stroke: none; }
+
+/* no grey/blue flash box when tapping on phones */
+html { -webkit-tap-highlight-color: transparent; }
+a, button, [role="button"], label { -webkit-tap-highlight-color: transparent; }
+a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
